@@ -229,6 +229,11 @@ export default function EasterEggModal({ onClose }) {
                     <p>
                       „Przyznaję się: korek w Rusocinie to była wymówka! 
                       O 14:00 potknąłem się o kable w magazynie, grając w Snake'a...
+                    </p>
+                    <p style={{ marginTop: 4 }}>
+                      A wiecie, że to właśnie w tym 2007 roku powstał pierwszy na świecie prawdziwy escape room w Japonii (Kioto), a nie w Polsce? My dopiero przecieramy szlaki!
+                    </p>
+                    <p style={{ marginTop: 4 }}>
                       Dzięki za uratowanie otwarcia obiektu! Jesteście mistrzami logistyki!”
                     </p>
                   </div>

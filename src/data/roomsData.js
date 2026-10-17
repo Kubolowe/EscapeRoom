@@ -328,6 +328,9 @@ Zielone diody świecą dla sekcji zasilania awaryjnego, wentylacji i elektrozamk
 - Cyfra 3: Sala Projektowa (Layout i BHP)
 - Cyfra 4: Centrum Kontroli (Odbiór jakościowy)
 
+*Ciekawostka historyczna od Dyrektora:*
+Warto wiedzieć, że to właśnie w **2007 roku** powstał **pierwszy na świecie stacjonarny escape room (Real Escape Game stworzony przez Takao Kato w Kioto w Japonii)**, a nie w Polsce! My w Polsce dopiero przecieramy te logistyczne szlaki!
+
 Sprawdź swój HUD w górnym pasku. Wprowadź kombinację na klawiaturze sejfu i otwórz obiekt na czas!"`
       },
       {
