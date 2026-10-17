@@ -334,9 +334,10 @@ Sprawdź swój HUD w górnym pasku. Wprowadź kombinację na klawiaturze sejfu i
         id: 'rf-easter-egg',
         x: 52,
         y: 28,
-        label: 'Złoty Portret Założyciela (Easter Egg ✨)',
+        label: 'Portret Dyrektora',
         icon: 'sparkles',
         type: 'easter-egg',
+        isSecret: true,
         title: 'Tajemniczy schowek za portretem dyrektora'
       }
     ]

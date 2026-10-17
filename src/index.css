@@ -443,6 +443,33 @@ html, body {
   border-color: var(--accent-green);
 }
 
+/* Secret Easter Egg Hotspot (discreet & hidden) */
+.hotspot-wrapper.is-secret {
+  width: 80px;
+  height: 95px;
+  min-width: 80px;
+  min-height: 95px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 26;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.hotspot-wrapper.is-secret .hotspot-secret-glow {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px dashed rgba(245, 158, 11, 0.45);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 75%);
+  pointer-events: none;
+}
+
+.hotspot-wrapper.is-secret:hover {
+  opacity: 0.55;
+}
+
 /* Tooltip on hover / touch */
 .hotspot-tooltip {
   position: absolute;

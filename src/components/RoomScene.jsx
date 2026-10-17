@@ -125,6 +125,7 @@ export default function RoomScene({
               label={hotspot.label}
               icon={hotspot.icon}
               isCompleted={isDone}
+              isSecret={Boolean(hotspot.isSecret || hotspot.type === 'easter-egg')}
               onClick={() => onHotspotClick(hotspot)}
             />
           );
@@ -155,19 +156,21 @@ export default function RoomScene({
       <div className="room-mobile-quickbar">
         <div className="mobile-quickbar-title">Dotknij obiektu do zbadania:</div>
         <div className="mobile-quickbar-items">
-          {room.hotspots.map((h) => {
-            const isDone = completedHotspots.includes(h.id);
-            return (
-              <button
-                key={h.id}
-                className={`mobile-quick-btn ${isDone ? 'is-done' : ''}`}
-                onClick={() => onHotspotClick(h)}
-              >
-                <span>{h.label.split('(')[0]}</span>
-                {isDone && <CheckCircle2 size={13} color="var(--accent-green)" />}
-              </button>
-            );
-          })}
+          {room.hotspots
+            .filter((h) => !h.isSecret && h.type !== 'easter-egg')
+            .map((h) => {
+              const isDone = completedHotspots.includes(h.id);
+              return (
+                <button
+                  key={h.id}
+                  className={`mobile-quick-btn ${isDone ? 'is-done' : ''}`}
+                  onClick={() => onHotspotClick(h)}
+                >
+                  <span>{h.label.split('(')[0]}</span>
+                  {isDone && <CheckCircle2 size={13} color="var(--accent-green)" />}
+                </button>
+              );
+            })}
         </div>
       </div>
     </div>

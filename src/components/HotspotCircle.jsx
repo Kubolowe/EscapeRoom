@@ -52,6 +52,7 @@ export default function HotspotCircle({
   label, 
   icon = 'search', 
   isCompleted = false, 
+  isSecret = false,
   onClick 
 }) {
   const IconComponent = isCompleted ? CheckCircle : (ICON_MAP[icon] || Search);
@@ -68,6 +69,22 @@ export default function HotspotCircle({
       handleClick(e);
     }
   };
+
+  if (isSecret) {
+    return (
+      <div 
+        className="hotspot-wrapper is-secret"
+        style={{ left: `${x}%`, top: `${y}%` }}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label="Tajemniczy element"
+      >
+        <div className="hotspot-secret-glow" aria-hidden="true" />
+      </div>
+    );
+  }
 
   return (
     <div 
