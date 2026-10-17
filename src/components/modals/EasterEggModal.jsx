@@ -227,14 +227,13 @@ export default function EasterEggModal({ onClose }) {
                   <div className="nokia-sms-body">
                     <strong>Od: Dyrektor</strong>
                     <p>
-                      „Przyznaję się: korek w Rusocinie to była wymówka! 
-                      O 14:00 potknąłem się o kable w magazynie, grając w Snake'a...
+                      „Przyznaję się: żaden korek w Rusocinie! O 14:00 potknąłem się o kable w magazynie, bijąc rekord w Snake'a...
                     </p>
                     <p style={{ marginTop: 4 }}>
-                      A wiecie, że to właśnie w tym 2007 roku powstał pierwszy na świecie prawdziwy escape room w Japonii (Kioto), a nie w Polsce? My dopiero przecieramy szlaki!
+                      Ale najważniejsze: dzięki wielkie, że tak solidnie zapieprzaliście dla Japończyków! Bo wiecie... mamy rok 2007 i pierwszy prawdziwy escape room na świecie powstał właśnie w Japonii (Kioto), a nie w Polsce! 
                     </p>
                     <p style={{ marginTop: 4 }}>
-                      Dzięki za uratowanie otwarcia obiektu! Jesteście mistrzami logistyki!”
+                      Więc oficjalnie robiliście nadgodziny dla centrali z Tokio. Arigato gozaimasu! 🇯🇵🍣 Premia oczywiście w jenach (albo punktach w Snake'u). Jesteście mistrzami logistyki!”
                     </p>
                   </div>
                   <div className="nokia-screen-footer">
