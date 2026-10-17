@@ -11,9 +11,26 @@ import {
   BookOpen, 
   ChevronLeft, 
   ChevronRight,
-  Shield
+  Shield,
+  Calendar,
+  Package,
+  Truck,
+  LayoutGrid,
+  Calculator,
+  ShieldCheck,
+  KeyRound
 } from 'lucide-react';
 import { playClick, playError, getMuted, setMuted } from '../audio/soundEngine';
+
+const ROOM_META = [
+  { shortName: '1. Planowanie', Icon: Calendar },
+  { shortName: '2. Magazyn', Icon: Package },
+  { shortName: '3. Dostawy', Icon: Truck },
+  { shortName: '4. Projekt', Icon: LayoutGrid },
+  { shortName: '5. Budżet', Icon: Calculator },
+  { shortName: '6. Kontrola', Icon: ShieldCheck },
+  { shortName: '7. Sejf', Icon: KeyRound },
+];
 
 export default function HUD({
   currentRoomIndex,
@@ -126,6 +143,8 @@ export default function HUD({
           const isSolved = solvedRooms.includes(room.id);
           const isAccessible = isRoomAccessible(idx);
           const isFinal = Boolean(room.isFinalRoom);
+          const meta = ROOM_META[idx] || { shortName: room.name, Icon: Shield };
+          const RoomIcon = meta.Icon;
 
           let stateClass = '';
           if (isCurrent) stateClass += ' is-current';
@@ -141,12 +160,10 @@ export default function HUD({
               onClick={() => handleRoomClick(idx)}
               title={`${room.number ? `Pokój ${room.number}: ` : ''}${room.name}${!isAccessible ? ' (Zablokowany)' : ''}`}
             >
-              {isSolved ? (
-                <CheckCircle2 size={13} color="#10b981" />
-              ) : !isAccessible ? (
-                <Lock size={12} />
-              ) : null}
-              <span>{isFinal ? 'Sejf' : `P${idx + 1}`}</span>
+              <RoomIcon size={14} className="hud-room-icon" />
+              <span className="hud-room-label">{meta.shortName}</span>
+              {isSolved && <CheckCircle2 size={13} color="#10b981" style={{ marginLeft: 2 }} />}
+              {!isAccessible && <Lock size={12} style={{ marginLeft: 2, opacity: 0.8 }} />}
             </button>
           );
         })}
@@ -168,7 +185,7 @@ export default function HUD({
         </button>
 
         <span className="hud-stepper-label">
-          {currentRoom?.isFinalRoom ? 'Sejf Dyrektora' : `Pokój ${currentRoomIndex + 1} / ${rooms.length}`}
+          {ROOM_META[currentRoomIndex]?.shortName || (currentRoom?.isFinalRoom ? '7. Sejf' : `Pokój ${currentRoomIndex + 1}`)}
         </span>
 
         <button

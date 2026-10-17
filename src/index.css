@@ -555,7 +555,7 @@ html, body {
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 6px 11px;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
@@ -565,6 +565,21 @@ html, body {
   white-space: nowrap;
   touch-action: manipulation;
   min-height: 36px;
+  flex-shrink: 0;
+}
+
+.hud-room-btn .hud-room-icon {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.hud-room-btn:hover .hud-room-icon,
+.hud-room-btn.is-current .hud-room-icon {
+  opacity: 1;
+}
+
+.hud-room-btn .hud-room-label {
+  letter-spacing: 0.2px;
 }
 
 .hud-room-btn:hover {
