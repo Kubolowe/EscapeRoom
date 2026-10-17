@@ -89,10 +89,10 @@ export default function PuzzleRoom6Quality({
           {!solved && (
             <div className="qa-buttons-choice">
               <button className="qa-btn qa-btn-sign" onClick={() => handleDecision(true)}>
-                TAK — Podpisz odbiór (Ryzykuj start)
+                TAK - Podpisz odbiór (Ryzykuj start)
               </button>
               <button className="qa-btn qa-btn-reject" onClick={() => handleDecision(false)}>
-                NIE — Wstrzymaj odbiór (Wymuś naprawę)
+                NIE - Wstrzymaj odbiór (Wymuś naprawę)
               </button>
             </div>
           )}
@@ -110,7 +110,7 @@ export default function PuzzleRoom6Quality({
               <div>
                 <h4 style={{ color: '#10b981', margin: 0, fontSize: 16 }}>Prawidłowa Odpowiedzialność Jakościowa!</h4>
                 <p style={{ color: '#cbd5e1', fontSize: 13, margin: '4px 0 0' }}>
-                  Wstrzymano odbiór – usterka została naprawiona przed wejściem gości. 
+                  Wstrzymano odbiór - usterka została naprawiona przed wejściem gości. 
                   Zdobyto 4. cyfrę do sejfu: <strong>7</strong> (pełny kod: <strong>2 0 0 7</strong>)!
                 </p>
               </div>

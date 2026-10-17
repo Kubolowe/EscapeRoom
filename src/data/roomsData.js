@@ -1,4 +1,4 @@
-// Escape Room: Misja Logistyka — Rok 2007
+// Escape ROOM: Misja Logistyka
 // Rooms and Puzzles Data Definition
 
 export const INITIAL_TIME_SECONDS = 20 * 60; // 20 minut
@@ -33,14 +33,14 @@ W kolumnach widoczne są zadania, czasy trwania oraz zależności. W notatce na 
         id: 'r1-calendar',
         x: 77,
         y: 45,
-        label: 'Kalendarz ścienny — Październik 2007',
+        label: 'Kalendarz ścienny - Październik 2007',
         icon: 'calendar',
         type: 'info',
         title: 'Ścienny kalendarz firmowy',
         content: `Data: **Niedziela, 14 października 2007 r.**
         
 Czerwonym markerem zakreślono dzisiejszy dzień z dopiskiem:
-"18:40 — Oficjalny start pierwszego w Trójmieście Escape Roomu dla dziennikarzy i komisji BHP!"
+"18:40 - Oficjalny start pierwszego w Trójmieście Escape Roomu dla dziennikarzy i komisji BHP!"
 Pozostało krytycznie mało czasu na dopięcie łańcucha dostaw i procedur bezpieczeństwa.`
       },
       {
@@ -65,7 +65,7 @@ Pozostało krytycznie mało czasu na dopięcie łańcucha dostaw i procedur bezp
     subtitle: 'Krok 2: Kodowanie towarów, strefy składowania i ładunki wrażliwe',
     bgImage: '/assets/rooms/magazyn.jpg',
     atmosphere: 'warehouse-shadow',
-    description: 'Zimne, metalowe regały magazynu podręcznego. W powietrzu unosi się zapach tektury i oleju technicznego. Właśnie dotarły skrzynie ze sprzętem – w tym ultra-wrażliwe czujniki optyczne i fotokomórki do zagadek laserowych.',
+    description: 'Zimne, metalowe regały magazynu podręcznego. W powietrzu unosi się zapach tektury i oleju technicznego. Właśnie dotarły skrzynie ze sprzętem - w tym ultra-wrażliwe czujniki optyczne i fotokomórki do zagadek laserowych.',
     hotspots: [
       {
         id: 'r2-box-a',
@@ -74,7 +74,7 @@ Pozostało krytycznie mało czasu na dopięcie łańcucha dostaw i procedur bezp
         label: 'Skrzynia A (Kable i osprzęt)',
         icon: 'box',
         type: 'info',
-        title: 'Oznakowanie: SKRZYNIA A — "OSPRZĘT ELEKTRYCZNY"',
+        title: 'Oznakowanie: SKRZYNIA A - "OSPRZĘT ELEKTRYCZNY"',
         content: `Ciężka skrzynia ze sklejki. W środku: bębny z przewodami miedzianymi, złączki śrubowe, zasilacze 12V oraz listwy zaciskowe. 
 Towar odporny na wstrząsy, lecz podatny na wilgoć.`
       },
@@ -95,7 +95,7 @@ Towar odporny na wstrząsy, lecz podatny na wilgoć.`
         label: 'Skrzynia C (Narzędzia ciężkie)',
         icon: 'tool',
         type: 'info',
-        title: 'Oznakowanie: SKRZYNIA C — "NARZĘDZIA MONTAŻOWE"',
+        title: 'Oznakowanie: SKRZYNIA C - "NARZĘDZIA MONTAŻOWE"',
         content: `Czerwona stalowa skrzynia narzędziowa. Zawiera młotki bezodrzutowe, wiertarkę udarową, klucze nasadowe i poziomice laserowe.
 Zgodnie z zasadami BHP skrzynie o masie powyżej 25 kg powinny spoczywać na dolnych poziomach paletowych.`
       }
@@ -111,7 +111,7 @@ Zgodnie z zasadami BHP skrzynie o masie powyżej 25 kg powinny spoczywać na dol
     subtitle: 'Krok 3: Reakcja na zakłócenia w łańcuchu dostaw i zapas bezpieczeństwa',
     bgImage: '/assets/rooms/dostawa.jpg',
     atmosphere: 'delivery-flicker',
-    description: 'Rampa rozładunkowa i brama towarowa. Jarzeniówki lekko brzęczą. Na drewnianej skrzyni wibruje telefon komórkowy – kierowca ciężarówki utknął w korku, a ekipa montażowa czeka!',
+    description: 'Rampa rozładunkowa i brama towarowa. Jarzeniówki lekko brzęczą. Na drewnianej skrzyni wibruje telefon komórkowy - kierowca ciężarówki utknął w korku, a ekipa montażowa czeka!',
     hotspots: [
       {
         id: 'r3-phone',
@@ -205,10 +205,10 @@ Przedstawiają rozmieszczenie czujek dymu, oświetlenia kierunkowego EXIT oraz z
     awardedDigit: null,
     name: 'Dział Kosztów i Zakupów',
     theme: 'Budżet i priorytetyzacja',
-    subtitle: 'Krok 5: Alokacja zasobów finansowych (CAPEX) — bezpieczeństwo ponad estetykę',
+    subtitle: 'Krok 5: Alokacja zasobów finansowych (CAPEX) - bezpieczeństwo ponad estetykę',
     bgImage: '/assets/rooms/biurko.jpg',
     atmosphere: 'desk-lamp',
-    description: 'Gabinet księgowo-zakupowy. Zielona lampa bankierska oświetla segregator faktur, kalkulator z taśmą papierową oraz listę pilnych zakupów. Budżet interwencyjny jest sztywny – wynosi dokładnie 500 PLN. Ani grosza więcej!',
+    description: 'Gabinet księgowo-zakupowy. Zielona lampa bankierska oświetla segregator faktur, kalkulator z taśmą papierową oraz listę pilnych zakupów. Budżet interwencyjny jest sztywny - wynosi dokładnie 500 PLN. Ani grosza więcej!',
     hotspots: [
       {
         id: 'r5-calculator',

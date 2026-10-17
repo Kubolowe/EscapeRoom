@@ -9,7 +9,7 @@ const CHAPTERS = [
     role: 'Koordynator Harmonogramu i Ścieżki Krytycznej',
     whatMustDo: [
       'Zdefiniować sekwencję nadrzędną zadań projektowych: najpierw identyfikacja zapotrzebowania technicznego (C), następnie weryfikacja i odbiór dostawy (B), potem montaż bazy instalacyjnej (A) i na końcu rozmieszczenie rekwizytów (D).',
-      'Wyznaczyć Ścieżkę Krytyczną (metoda CPM — Critical Path Method), czyli ciąg zadań o zerowym marginesie czasowym, których opóźnienie bezpośrednio przekłada się na termin otwarcia obiektu.',
+      'Wyznaczyć Ścieżkę Krytyczną (metoda CPM - Critical Path Method), czyli ciąg zadań o zerowym marginesie czasowym, których opóźnienie bezpośrednio przekłada się na termin otwarcia obiektu.',
       'Zidentyfikować i wyeliminować potencjalne wąskie gardła (bottlenecks) przed rozpoczęciem prac montażowych.'
     ],
     documents: 'Arkusz Harmonogramu GANTT / CPM, Zlecenie Projektowe, Specyfikacja Wymagań Technicznych.',
@@ -22,17 +22,17 @@ const CHAPTERS = [
     role: 'Kierownik Magazynu i Zabezpieczenia Ładunków',
     whatMustDo: [
       'Przeprowadzić segregację asortymentową: bezwzględnie oddzielić ciężkie narzędzia stalowe od czułej aparatury optoelektronicznej (lasery, pryzmaty, fotokomórki).',
-      'Wymusić stosowanie międzynarodowych znaków manipulacyjnych wg normy ISO 780 (symbol kieliszka — ładunek kruchy / delikatny).',
+      'Wymusić stosowanie międzynarodowych znaków manipulacyjnych wg normy ISO 780 (symbol kieliszka - ładunek kruchy / delikatny).',
       'Dobrać opakowanie z profilowaną pianką poliuretanową o zamkniętych komórkach, tłumiącą drgania i wstrząsy transportowe.',
       'Zgodnie z BHP ładunki o masie powyżej 25 kg (narzędzia, wiertarki) składować wyłącznie na najniższych kondygnacjach paletowych, eliminując ryzyko upadku z wysokości i urazów kręgosłupa.'
     ],
-    documents: 'Karty Magazynowe (PZ — Przyjęcie Zewnętrzne, WZ — Wydanie Zewnętrzne), Oznaczenia Manipulacyjne ISO 780.',
+    documents: 'Karty Magazynowe (PZ - Przyjęcie Zewnętrzne, WZ - Wydanie Zewnętrzne), Oznaczenia Manipulacyjne ISO 780.',
     criticalError: 'Złożenie sensorów optycznych do metalowej skrzyni narzędziowej z młotami i kluczami (nieodwracalne uszkodzenie soczewek i strata tysięcy złotych).',
     goldenRule: 'Bezpieczeństwo ładunku zaczyna się od właściwego opakowania i rygorystycznego strefowania magazynu.'
   },
   {
     id: 3,
-    title: '3. Transport i Reakcja na Ryzyko (Strefa Dostaw — Trójmiasto)',
+    title: '3. Transport i Reakcja na Ryzyko (Strefa Dostaw: Trójmiasto)',
     role: 'Dyspozytor Transportu i Zarządca Ciągłości Łańcucha Dostaw',
     whatMustDo: [
       'Wdrożyć procedurę zarządzania zakłóceniami transportowymi (Supply Chain Disruption Plan).',
@@ -50,7 +50,7 @@ const CHAPTERS = [
     role: 'Audytor Layoutu Logistycznego i Koordynator BHP/PPOŻ',
     whatMustDo: [
       'Zaprojektować ciągi komunikacyjne o parametrach zgodnych z rozporządzeniem MSWiA: minimalna szerokość ciągów ewakuacyjnych nie może być mniejsza niż 1,4 m.',
-      'Zastosować regułę rotacji ABC: towary i wyposażenie o najwyższej rotacji (grupa A — 80% pobrań) muszą znajdować się najbliżej wejścia/strefy wydań, minimalizując czas i drogę transportu wewnętrznego.',
+      'Zastosować regułę rotacji ABC: towary i wyposażenie o najwyższej rotacji (grupa A: 80% pobrań) muszą znajdować się najbliżej wejścia/strefy wydań, minimalizując czas i drogę transportu wewnętrznego.',
       'Bezwzględnie dopilnować, aby drzwi ewakuacyjne EXIT otwierały się na zewnątrz i pod żadnym pozorem nie były zastawiane paletami, pudłami ani blokowane łańcuchami.'
     ],
     documents: 'Instrukcja Bezpieczeństwa Pożarowego (IBP), Rzut Architektoniczny Ciągów Komunikacyjnych, Analiza Rotacji ABC.',
@@ -66,7 +66,7 @@ const CHAPTERS = [
       'W warunkach twardego limitu 500 PLN zaalokować środki na pozycje krytyczne: elektrozamki fail-safe (180 PLN), oświetlenie awaryjne z akumulatorem (120 PLN) oraz niepalne okablowanie atestowane (90 PLN) = 390 PLN.',
       'Świadomie odrzucić wydatki dekoracyjne (plakaty retro 160 PLN), gdyż doprowadziłyby do przekroczenia budżetu (550 PLN) i braku środków na instalacje ratujące życie.'
     ],
-    documents: 'Arkusz Zapotrzebowania Materiałowego (BOM — Bill of Materials), Zestawienie Ofert Dostawców, Bilans Kosztów CAPEX/OPEX.',
+    documents: 'Arkusz Zapotrzebowania Materiałowego (BOM - Bill of Materials), Zestawienie Ofert Dostawców, Bilans Kosztów CAPEX/OPEX.',
     criticalError: 'Uleganie presji estetycznej i zakup dekoracji kosztem atestowanego sprzętu przeciwpożarowego lub oświetlenia awaryjnego.',
     goldenRule: 'Prawdziwy logistyk potrafi powiedzieć „NIE” wydatkom luksusowym, gdy stawką jest bezpieczeństwo użytkowników.'
   },
@@ -79,7 +79,7 @@ const CHAPTERS = [
       'Działać jako niezależna bramka jakościowa (Quality Gate): zweryfikować zasilanie awaryjne, wentylację oraz mechanikę zagadek.',
       'W przypadku wykrycia zacinania mechanizmu (sensor laserowy przerywa w cyklu #4 i #7) BEZWZGLĘDNIE WSTRZYMAĆ ODBIÓR TECHNICZNY (opcja NIE) i wymusić natychmiastową naprawę przed wpuszczeniem gości.'
     ],
-    documents: 'Protokół Odbioru Końcowego (POK), Raport Niezgodności Jakościowej (NCR — Non-Conformance Report), Checklista Testów Obciążeniowych.',
+    documents: 'Protokół Odbioru Końcowego (POK), Raport Niezgodności Jakościowej (NCR - Non-Conformance Report), Checklista Testów Obciążeniowych.',
     criticalError: 'Podpisanie protokołu odbioru ze świadomością usterki lasera ("może jakoś zadziała"), co prowadzi do kompromitacji podczas uroczystego otwarcia przed komisją.',
     goldenRule: 'Logistyka kończy się dopiero wtedy, gdy sprawdzony i bezpieczny produkt działa bezawaryjnie w rękach klienta.'
   }

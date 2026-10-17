@@ -112,8 +112,7 @@ export default function HUD({
       <div className="hud-title-zone">
         <div className="hud-brand">
           <Shield size={18} color="#38bdf8" />
-          <span>MISJA LOGISTYKA</span>
-          <span className="hud-badge-year">2007</span>
+          <span>Escape ROOM: Misja Logistyka</span>
         </div>
         <div className="hud-room-subtitle">
           {currentRoom ? currentRoom.name : ''}

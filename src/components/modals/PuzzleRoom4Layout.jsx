@@ -171,7 +171,7 @@ export default function PuzzleRoom4Layout({
               <div className="edu-callout-text">
                 W logistyce magazynowej <strong>zasada ABC</strong> nakazuje umieszczać towary o najwyższej rotacji 
                 (grupa A) w strefie o najkrótszej drodze transportu, redukując zbędny ruch wózka i pracowników. 
-                Ponadto <strong>drogi ewakuacyjne</strong> to bezwzględny priorytet prawny BHP – nie mogą być zastawione nawet tymczasowo.
+                Ponadto <strong>drogi ewakuacyjne</strong> to bezwzględny priorytet prawny BHP - nie mogą być zastawione nawet tymczasowo.
               </div>
             </div>
           </div>
