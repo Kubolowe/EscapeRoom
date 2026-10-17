@@ -332,13 +332,13 @@ Sprawdź swój HUD w górnym pasku. Wprowadź kombinację na klawiaturze sejfu i
       },
       {
         id: 'rf-easter-egg',
-        x: 52,
-        y: 28,
-        label: 'Portret Dyrektora',
+        x: 25,
+        y: 34,
+        label: 'Obraz Dyrektora (Złocona Rama)',
         icon: 'sparkles',
         type: 'easter-egg',
         isSecret: true,
-        title: 'Tajemniczy schowek za portretem dyrektora'
+        title: 'Tajemniczy schowek za obrazem dyrektora'
       }
     ]
   }
