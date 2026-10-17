@@ -246,3 +246,29 @@ export function playFanfare() {
     console.warn('Audio error:', e);
   }
 }
+
+export function playNokiaTone() {
+  if (isMuted) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    
+    // Classic Nokia SMS double-beep pattern
+    const beeps = [0, 0.1, 0.35, 0.45];
+    beeps.forEach((t) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1318.5, now + t);
+      gain.gain.setValueAtTime(0.25, now + t);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + t + 0.08);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + t);
+      osc.stop(now + t + 0.08);
+    });
+  } catch (e) {
+    console.warn('Audio error:', e);
+  }
+}

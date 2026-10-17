@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Sparkles, Volume2, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { playClick, playFanfare, playKeypadBeep } from '../../audio/soundEngine';
+import { playClick, playFanfare, playKeypadBeep, playNokiaTone } from '../../audio/soundEngine';
 
 const GRID_SIZE = 12;
 const INITIAL_SNAKE = [
@@ -10,8 +10,13 @@ const INITIAL_SNAKE = [
   { x: 5, y: 7 }
 ];
 
-export default function EasterEggModal({ onClose }) {
-  const [phoneMode, setPhoneMode] = useState('menu'); // 'menu' | 'sms' | 'snake'
+export default function EasterEggModal({ 
+  onClose, 
+  isTimeout = false,
+  onRestart,
+  onAddExtraTime 
+}) {
+  const [phoneMode, setPhoneMode] = useState(isTimeout ? 'timeout-sms' : 'menu'); // 'menu' | 'sms' | 'timeout-sms' | 'snake'
   const [snake, setSnake] = useState(INITIAL_SNAKE);
   const [food, setFood] = useState({ x: 3, y: 3 });
   const [dir, setDir] = useState({ x: 0, y: -1 });
@@ -22,6 +27,13 @@ export default function EasterEggModal({ onClose }) {
 
   const dirRef = useRef(dir);
   dirRef.current = dir;
+
+  // Sound ring on open if timeout
+  useEffect(() => {
+    if (isTimeout) {
+      playNokiaTone();
+    }
+  }, [isTimeout]);
 
   // Generate food not on snake body
   const spawnFood = (currentSnake) => {
@@ -155,12 +167,35 @@ export default function EasterEggModal({ onClose }) {
         }} 
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Floating Top Banner when triggered by Timeout */}
+        {isTimeout && (
+          <div style={{
+            background: 'rgba(239, 68, 68, 0.25)',
+            border: '1px solid #ef4444',
+            borderRadius: 8,
+            padding: '8px 14px',
+            color: '#fee2e2',
+            fontSize: 13,
+            textAlign: 'center',
+            marginBottom: 8,
+            backdropFilter: 'blur(6px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
+            boxShadow: '0 0 16px rgba(239, 68, 68, 0.4)'
+          }}>
+            <span style={{ fontSize: 16 }}>⚠️</span>
+            <span><strong>CZAS MINĄŁ!</strong> Masz nową wiadomość od Dyrektora!</span>
+          </div>
+        )}
+
         {/* Floating Close Button outside phone */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 6 }}>
           <button 
             className="modal-close-btn" 
             onClick={() => { playClick(); onClose(); }}
-            title="Schowaj telefon za portret"
+            title={isTimeout ? "Zamknij telefon" : "Schowaj telefon za obraz"}
             aria-label="Zamknij"
             style={{ background: 'rgba(0, 0, 0, 0.7)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
           >
@@ -183,7 +218,7 @@ export default function EasterEggModal({ onClose }) {
               {/* LCD Top Status Bar (Signal bars, Battery bars, Clock) */}
               <div className="nokia-lcd-statusbar">
                 <span className="nokia-signal-bars" title="Zasięg sieci">📶 IIII</span>
-                <span className="nokia-clock-text">18:00</span>
+                <span className="nokia-clock-text">{isTimeout ? '00:00' : '18:00'}</span>
                 <span className="nokia-battery-bars" title="Bateria">IIII 🔋</span>
               </div>
 
@@ -192,33 +227,117 @@ export default function EasterEggModal({ onClose }) {
                 <div className="nokia-screen-content nokia-menu-layout">
                   <div className="nokia-lcd-title">MENU GŁÓWNE</div>
                   <div className="nokia-menu-items">
-                    <button 
-                      className="nokia-lcd-btn"
-                      onClick={() => { playClick(); setPhoneMode('sms'); }}
-                    >
-                      ✉ 1. Tajne SMS Dyrektora
-                    </button>
-                    <button 
-                      className="nokia-lcd-btn"
-                      onClick={handleStartSnake}
-                    >
-                      🐍 2. Gra Snake (Wąż)
-                    </button>
-                    <button 
-                      className="nokia-lcd-btn"
-                      onClick={triggerConfettiParty}
-                    >
-                      🎉 3. Bankiet & Konfetti
-                    </button>
+                    {isTimeout ? (
+                      <>
+                        <button 
+                          className="nokia-lcd-btn"
+                          onClick={() => { playClick(); setPhoneMode('timeout-sms'); }}
+                        >
+                          ✉ 1. Wiadomość Dyrektora
+                        </button>
+                        <button 
+                          className="nokia-lcd-btn"
+                          onClick={handleStartSnake}
+                        >
+                          🐍 2. Gra Snake II (Wąż)
+                        </button>
+                        {onAddExtraTime && (
+                          <button 
+                            className="nokia-lcd-btn"
+                            onClick={() => { playClick(); onAddExtraTime(300); }}
+                          >
+                            ⏳ 3. Poproś o +5 minut
+                          </button>
+                        )}
+                        {onRestart && (
+                          <button 
+                            className="nokia-lcd-btn"
+                            onClick={() => { playClick(); onRestart(); }}
+                          >
+                            🔄 4. Zacznij od nowa
+                          </button>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <button 
+                          className="nokia-lcd-btn"
+                          onClick={() => { playClick(); setPhoneMode('sms'); }}
+                        >
+                          ✉ 1. Tajne SMS Dyrektora
+                        </button>
+                        <button 
+                          className="nokia-lcd-btn"
+                          onClick={handleStartSnake}
+                        >
+                          🐍 2. Gra Snake (Wąż)
+                        </button>
+                        <button 
+                          className="nokia-lcd-btn"
+                          onClick={triggerConfettiParty}
+                        >
+                          🎉 3. Bankiet & Konfetti
+                        </button>
+                      </>
+                    )}
                   </div>
                   <div className="nokia-screen-footer">
                     <span>Wybierz</span>
-                    <span>Wstecz</span>
+                    <span onClick={() => { playClick(); onClose(); }} style={{ cursor: 'pointer' }}>Wyjdź</span>
                   </div>
                 </div>
               )}
 
-              {/* SCREEN CONTENT: 2. SECRET SMS CONFESSION */}
+              {/* SCREEN CONTENT: 2. TIMEOUT ANGRY SMS FROM DIRECTOR */}
+              {phoneMode === 'timeout-sms' && (
+                <div className="nokia-screen-content nokia-sms-layout">
+                  <div className="nokia-sms-header" style={{ color: '#152406', fontWeight: 800 }}>
+                    <span>✉ 1 NOWA (ALARM!)</span>
+                    <span>00:00</span>
+                  </div>
+                  <div className="nokia-sms-body" style={{ maxHeight: 78 }}>
+                    <strong>Od: Dyrektor</strong>
+                    <p style={{ fontWeight: 700, margin: '2px 0', color: '#0f1a04' }}>
+                      „CZAS MINĄŁ! Jak mogłeś nie wykonać tak prostego zadania?!”
+                    </p>
+                    <p style={{ margin: 0, fontSize: 9.5 }}>
+                      „Otwarcie odwołane, komisja czeka pod drzwiami, a Ty nie ogarnąłeś podstaw logistyki i BHP! Co Ty tam w ogóle robiłeś?!”
+                    </p>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginTop: 2 }}>
+                    {onAddExtraTime && (
+                      <button
+                        className="nokia-lcd-btn"
+                        style={{ fontSize: 9, padding: '2px 4px', textAlign: 'center' }}
+                        onClick={() => {
+                          playClick();
+                          onAddExtraTime(300);
+                        }}
+                      >
+                        ⏳ Daj mi jeszcze 5 minut (+5 min)
+                      </button>
+                    )}
+                    {onRestart && (
+                      <button
+                        className="nokia-lcd-btn"
+                        style={{ fontSize: 9, padding: '2px 4px', textAlign: 'center' }}
+                        onClick={() => {
+                          playClick();
+                          onRestart();
+                        }}
+                      >
+                        🔄 Zacznij misję od nowa
+                      </button>
+                    )}
+                  </div>
+                  <div className="nokia-screen-footer">
+                    <span onClick={() => { playClick(); setPhoneMode('menu'); }} style={{ cursor: 'pointer' }}>Menu</span>
+                    <span onClick={() => { playClick(); onClose(); }} style={{ cursor: 'pointer' }}>Zamknij</span>
+                  </div>
+                </div>
+              )}
+
+              {/* SCREEN CONTENT: 3. SECRET SMS CONFESSION (EASTER EGG) */}
               {phoneMode === 'sms' && (
                 <div className="nokia-screen-content nokia-sms-layout">
                   <div className="nokia-sms-header">
@@ -243,7 +362,7 @@ export default function EasterEggModal({ onClose }) {
                 </div>
               )}
 
-              {/* SCREEN CONTENT: 3. PLAYABLE SNAKE GAME */}
+              {/* SCREEN CONTENT: 4. PLAYABLE SNAKE GAME */}
               {phoneMode === 'snake' && (
                 <div className="nokia-screen-content nokia-snake-layout">
                   <div className="nokia-snake-statusbar">
@@ -288,7 +407,7 @@ export default function EasterEggModal({ onClose }) {
                   </div>
 
                   <div className="nokia-screen-footer">
-                    <span onClick={() => { playClick(); setPhoneMode('menu'); }} style={{ cursor: 'pointer' }}>Menu</span>
+                    <span onClick={() => { playClick(); setPhoneMode(isTimeout ? 'timeout-sms' : 'menu'); }} style={{ cursor: 'pointer' }}>Wstecz</span>
                     <span>Steruj 2,4,6,8</span>
                   </div>
                 </div>
@@ -304,8 +423,8 @@ export default function EasterEggModal({ onClose }) {
               className="nokia-btn nokia-btn-c" 
               onClick={() => {
                 playClick();
-                if (phoneMode !== 'menu') setPhoneMode('menu');
-                else onClose();
+                if (phoneMode === 'menu') onClose();
+                else setPhoneMode(isTimeout ? 'timeout-sms' : 'menu');
               }}
               title="Wstecz / Menu (C)"
             >
@@ -320,7 +439,7 @@ export default function EasterEggModal({ onClose }) {
                 playClick();
                 if (phoneMode === 'menu') setPhoneMode('snake');
                 else if (phoneMode === 'snake' && (!isPlaying || isGameOver)) handleStartSnake();
-                else if (phoneMode === 'sms') setPhoneMode('menu');
+                else if (phoneMode === 'sms' || phoneMode === 'timeout-sms') setPhoneMode('menu');
               }}
               title="Przycisk główny NAVI"
             >

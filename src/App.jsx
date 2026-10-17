@@ -27,6 +27,7 @@ export default function App() {
   const [solvedRooms, setSolvedRooms] = useState([]);
   const [completedHotspots, setCompletedHotspots] = useState([]);
   const [activeModal, setActiveModal] = useState({ type: 'intro' });
+  const [hasTriggeredTimeout, setHasTriggeredTimeout] = useState(false);
 
   const timerRef = useRef(null);
 
@@ -43,6 +44,14 @@ export default function App() {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [gameStarted, isCompleted, timerSeconds]);
+
+  // When countdown reaches 0: trigger Nokia phone with Director's angry SMS!
+  useEffect(() => {
+    if (gameStarted && !isCompleted && timerSeconds === 0 && !hasTriggeredTimeout) {
+      setHasTriggeredTimeout(true);
+      setActiveModal({ type: 'easter-egg', isTimeout: true });
+    }
+  }, [timerSeconds, gameStarted, isCompleted, hasTriggeredTimeout]);
 
   // Handle Game Start
   const handleStartGame = () => {
@@ -130,7 +139,15 @@ export default function App() {
     setCollectedDigits([null, null, null, null]);
     setSolvedRooms([]);
     setCompletedHotspots([]);
+    setHasTriggeredTimeout(false);
     setActiveModal({ type: 'intro' });
+  };
+
+  // Add extra time if player requests grace period after timeout
+  const handleAddExtraTime = (seconds = 300) => {
+    setTimerSeconds((prev) => prev + seconds);
+    setHasTriggeredTimeout(false);
+    setActiveModal(null);
   };
 
   const currentRoom = ROOMS_DATA[currentRoomIndex] || ROOMS_DATA[0];
@@ -211,7 +228,12 @@ export default function App() {
       )}
 
       {activeModal?.type === 'easter-egg' && (
-        <EasterEggModal onClose={() => setActiveModal(null)} />
+        <EasterEggModal 
+          isTimeout={Boolean(activeModal.isTimeout)}
+          onClose={() => setActiveModal(null)} 
+          onRestart={handleRestart}
+          onAddExtraTime={handleAddExtraTime}
+        />
       )}
 
       {/* Room Puzzles */}
