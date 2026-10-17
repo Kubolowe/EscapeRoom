@@ -207,20 +207,6 @@ export default function HUD({
       {/* Center/Right Stats Zone: Timer & Safe Code */}
       <div className="hud-stats-zone">
         {/* Handbook Button */}
-        {onOpenHandbook && (
-          <button
-            type="button"
-            className="hud-action-btn hud-handbook-btn"
-            onClick={() => {
-              playClick();
-              onOpenHandbook();
-            }}
-            title="Otwórz Podręcznik Logistyki i BHP"
-          >
-            <BookOpen size={16} color="#fbbf24" />
-            <span className="hud-handbook-text">Podręcznik BHP</span>
-          </button>
-        )}
 
         {/* Digital Countdown Timer */}
         <div 

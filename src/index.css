@@ -746,6 +746,12 @@ html, body {
   transform: translateY(-1px);
 }
 
+.room-handbook-room-tag {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
 /* Floating Banner when Room is Solved */
 .room-solved-banner {
   position: absolute;

@@ -1,6 +1,28 @@
 import React, { useState } from 'react';
-import { X, BookOpen, CheckCircle, AlertTriangle, ShieldCheck, FileText, ChevronRight } from 'lucide-react';
+import { 
+  X, 
+  BookOpen, 
+  CheckCircle, 
+  AlertTriangle, 
+  ShieldCheck, 
+  FileText, 
+  ChevronRight,
+  Calendar,
+  Package,
+  Truck,
+  LayoutGrid,
+  Calculator
+} from 'lucide-react';
 import { playClick } from '../../audio/soundEngine';
+
+const CHAPTER_ICONS = {
+  1: Calendar,
+  2: Package,
+  3: Truck,
+  4: LayoutGrid,
+  5: Calculator,
+  6: ShieldCheck,
+};
 
 const CHAPTERS = [
   {
@@ -101,9 +123,9 @@ export default function LogisticsHandbookModal({
           <div className="modal-title-group">
             <BookOpen size={20} color="var(--accent-amber)" />
             <div>
-              <div className="modal-title-text">Księga Standardów i Obowiązków Logistyka</div>
+              <div className="modal-title-text">Wytyczne: Co logistyk musi tu zrobić?</div>
               <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                Vademecum Merytoryczne • Procedury Logistyczne i BHP (Escape Room Trójmiasto 2007)
+                Procedury operacyjne i standardy dla każdego etapu misji
               </div>
             </div>
           </div>
@@ -132,6 +154,7 @@ export default function LogisticsHandbookModal({
 
             {CHAPTERS.map((ch) => {
               const isSelected = ch.id === selectedChapterId;
+              const IconComp = CHAPTER_ICONS[ch.id] || BookOpen;
               return (
                 <button
                   key={ch.id}
@@ -140,21 +163,24 @@ export default function LogisticsHandbookModal({
                     background: isSelected ? 'rgba(56, 189, 248, 0.18)' : 'rgba(255, 255, 255, 0.04)',
                     border: `1px solid ${isSelected ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.08)'}`,
                     borderRadius: 6,
-                    padding: '8px 12px',
+                    padding: '8px 10px',
                     textAlign: 'left',
                     color: isSelected ? '#ffffff' : 'var(--text-muted)',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
+                    gap: 8,
                     fontSize: 12,
                     fontWeight: isSelected ? 700 : 500,
                     lineHeight: 1.3,
                     transition: 'all 0.15s ease'
                   }}
                 >
-                  <span>{ch.title.split('(')[0]}</span>
-                  {isSelected && <ChevronRight size={14} color="var(--accent-cyan)" />}
+                  <IconComp size={15} color={isSelected ? 'var(--accent-cyan)' : 'var(--text-dim)'} style={{ flexShrink: 0 }} />
+                  <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {ch.title.split('(')[0].trim()}
+                  </span>
+                  <ChevronRight size={14} color={isSelected ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.2)'} style={{ flexShrink: 0 }} />
                 </button>
               );
             })}

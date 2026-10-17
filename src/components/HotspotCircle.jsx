@@ -18,7 +18,8 @@ import {
   ShieldAlert, 
   Cpu, 
   ClipboardCheck, 
-  Briefcase 
+  Briefcase,
+  Sparkles
 } from 'lucide-react';
 import { playClick } from '../audio/soundEngine';
 
@@ -40,7 +41,9 @@ const ICON_MAP = {
   'shield-alert': ShieldAlert,
   cpu: Cpu,
   'clipboard-check': ClipboardCheck,
-  briefcase: Briefcase
+  briefcase: Briefcase,
+  sparkles: Sparkles,
+  'easter-egg': Sparkles
 };
 
 export default function HotspotCircle({ 

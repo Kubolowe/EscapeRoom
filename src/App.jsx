@@ -14,6 +14,7 @@ import IntroModal from './components/modals/IntroModal';
 import VictoryScreen from './components/modals/VictoryScreen';
 import HelpModal from './components/modals/HelpModal';
 import LogisticsHandbookModal from './components/modals/LogisticsHandbookModal';
+import EasterEggModal from './components/modals/EasterEggModal';
 
 import { ROOMS_DATA, INITIAL_TIME_SECONDS } from './data/roomsData';
 
@@ -67,6 +68,11 @@ export default function App() {
     } else if (hotspot.type === 'safe') {
       setActiveModal({
         type: 'safe',
+        hotspotId: hotspot.id
+      });
+    } else if (hotspot.type === 'easter-egg') {
+      setActiveModal({
+        type: 'easter-egg',
         hotspotId: hotspot.id
       });
     }
@@ -141,7 +147,6 @@ export default function App() {
         collectedDigits={collectedDigits}
         timerSeconds={timerSeconds}
         onOpenHelp={() => setActiveModal({ type: 'help' })}
-        onOpenHandbook={() => setActiveModal({ type: 'handbook', chapter: currentRoomIndex + 1 })}
       />
 
       {/* 16:9 Living Room Scene Container */}
@@ -196,6 +201,10 @@ export default function App() {
           onClose={() => setActiveModal(null)}
           onUnlockSuccess={handleSafeUnlockSuccess}
         />
+      )}
+
+      {activeModal?.type === 'easter-egg' && (
+        <EasterEggModal onClose={() => setActiveModal(null)} />
       )}
 
       {/* Room Puzzles */}

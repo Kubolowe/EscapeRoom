@@ -329,6 +329,15 @@ Zielone diody świecą dla sekcji zasilania awaryjnego, wentylacji i elektrozamk
 - Cyfra 4: Centrum Kontroli (Odbiór jakościowy)
 
 Sprawdź swój HUD w górnym pasku. Wprowadź kombinację na klawiaturze sejfu i otwórz obiekt na czas!"`
+      },
+      {
+        id: 'rf-easter-egg',
+        x: 52,
+        y: 28,
+        label: 'Złoty Portret Założyciela (Easter Egg ✨)',
+        icon: 'sparkles',
+        type: 'easter-egg',
+        title: 'Tajemniczy schowek za portretem dyrektora'
       }
     ]
   }

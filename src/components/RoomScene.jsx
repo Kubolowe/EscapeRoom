@@ -2,8 +2,29 @@ import React from 'react';
 import HotspotCircle from './HotspotCircle';
 import DustMotes from './DustMotes';
 import CRTOverlay from './CRTOverlay';
-import { BookOpen, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { 
+  BookOpen, 
+  ArrowRight, 
+  CheckCircle2,
+  Calendar,
+  Package,
+  Truck,
+  LayoutGrid,
+  Calculator,
+  ShieldCheck,
+  KeyRound
+} from 'lucide-react';
 import { playClick } from '../audio/soundEngine';
+
+const ROOM_THEMES = {
+  1: { short: '1. Planowanie', Icon: Calendar },
+  2: { short: '2. Magazyn', Icon: Package },
+  3: { short: '3. Dostawy', Icon: Truck },
+  4: { short: '4. Projekt', Icon: LayoutGrid },
+  5: { short: '5. Budżet', Icon: Calculator },
+  6: { short: '6. Kontrola', Icon: ShieldCheck },
+  7: { short: '7. Sejf', Icon: KeyRound },
+};
 
 export default function RoomScene({
   room,
@@ -15,6 +36,8 @@ export default function RoomScene({
   onOpenHandbook
 }) {
   const atmosphere = room.atmosphere || 'default';
+  const currentTheme = ROOM_THEMES[room.number] || { short: `Pokój ${room.number || 1}`, Icon: BookOpen };
+  const RoomThemeIcon = currentTheme.Icon;
 
   return (
     <div className="stage-wrapper">
@@ -82,10 +105,11 @@ export default function RoomScene({
               playClick();
               if (onOpenHandbook) onOpenHandbook(room.number);
             }}
-            title="Przeczytaj co logistyk musi zrobić na tym etapie"
+            title={`Przeczytaj wytyczne: Co logistyk musi tu zrobić? (${currentTheme.short})`}
           >
-            <BookOpen size={14} color="var(--accent-amber)" />
-            <span>Co logistyk musi tu zrobić? (Wytyczne)</span>
+            <RoomThemeIcon size={14} color="#38bdf8" />
+            <span className="room-handbook-room-tag">{currentTheme.short}:</span>
+            <span>Co logistyk musi tu zrobić?</span>
           </button>
         )}
 
