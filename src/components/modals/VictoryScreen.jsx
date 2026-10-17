@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { Award, Printer, RotateCcw, CheckCircle, ShieldCheck, Download, Check } from 'lucide-react';
+import { Award, Printer, RotateCcw, CheckCircle, ShieldCheck, Download, Check, X, Eye } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { LOGISTICS_PILLARS } from '../../data/roomsData';
 import { playClick, playSuccess } from '../../audio/soundEngine';
 
 export default function VictoryScreen({ 
   timerSeconds, 
-  onRestart 
+  onRestart,
+  onClose
 }) {
   const certRef = useRef(null);
   const [isExporting, setIsExporting] = useState(false);
@@ -71,7 +72,25 @@ export default function VictoryScreen({
 
   return (
     <div className="modal-backdrop">
-      <div className="modal-window" style={{ maxWidth: 840, maxHeight: '95vh' }}>
+      <div className="modal-window" style={{ maxWidth: 840, maxHeight: '95vh', position: 'relative' }}>
+        {/* Header with Close Option */}
+        <div className="modal-header" style={{ padding: '10px 18px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--accent-green)', fontWeight: 700, fontSize: 13, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+            <Award size={18} />
+            <span>Obiekt Otwarty • Misja Zakończona Sukcesem</span>
+          </div>
+          {onClose && (
+            <button 
+              className="modal-close-btn" 
+              onClick={() => { playClick(); onClose(); }}
+              title="Zamknij i przejdź do swobodnego przeglądania pokoi"
+              aria-label="Zamknij"
+            >
+              <X size={16} />
+            </button>
+          )}
+        </div>
+
         <div className="modal-body" style={{ padding: 24 }}>
           {/* Certificate of Logistics Excellence */}
           <div className="certificate-frame" ref={certRef}>
@@ -195,6 +214,18 @@ export default function VictoryScreen({
                 <Printer size={18} />
                 <span>Drukuj / Zapisz (PDF)</span>
               </button>
+
+              {onClose && (
+                <button 
+                  className="btn-secondary" 
+                  onClick={() => { playClick(); onClose(); }}
+                  style={{ borderColor: 'var(--accent-cyan)', color: 'var(--accent-cyan)' }}
+                  title="Powróć do gry i swobodnie zwiedzaj wszystkie pokoje"
+                >
+                  <Eye size={18} />
+                  <span>Wróć do pokoi</span>
+                </button>
+              )}
 
               <button className="btn-secondary" onClick={handleRestartGame}>
                 <RotateCcw size={18} />

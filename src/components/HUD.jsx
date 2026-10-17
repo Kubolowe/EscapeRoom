@@ -18,7 +18,8 @@ import {
   LayoutGrid,
   Calculator,
   ShieldCheck,
-  KeyRound
+  KeyRound,
+  Trophy
 } from 'lucide-react';
 import { playClick, playError, getMuted, setMuted } from '../audio/soundEngine';
 
@@ -39,6 +40,8 @@ export default function HUD({
   solvedRooms = [],
   collectedDigits = [null, null, null, null],
   timerSeconds = 1200,
+  isCompleted = false,
+  onOpenVictory,
   onOpenHelp,
   onOpenHandbook
 }) {
@@ -257,6 +260,22 @@ export default function HUD({
           >
             {isFullscreen ? <Minimize size={17} /> : <Maximize size={17} />}
           </button>
+
+          {isCompleted && onOpenVictory && (
+            <button
+              type="button"
+              className="hud-action-btn"
+              onClick={() => {
+                playClick();
+                onOpenVictory();
+              }}
+              title="Zobacz Certyfikat Zwycięstwa"
+              aria-label="Certyfikat Zwycięstwa"
+              style={{ background: 'rgba(245, 158, 11, 0.25)', borderColor: 'var(--accent-amber)' }}
+            >
+              <Trophy size={17} color="#fbbf24" />
+            </button>
+          )}
 
           {onOpenHelp && (
             <button

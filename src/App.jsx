@@ -66,10 +66,14 @@ export default function App() {
         hotspotId: hotspot.id
       });
     } else if (hotspot.type === 'safe') {
-      setActiveModal({
-        type: 'safe',
-        hotspotId: hotspot.id
-      });
+      if (isCompleted) {
+        setActiveModal({ type: 'victory' });
+      } else {
+        setActiveModal({
+          type: 'safe',
+          hotspotId: hotspot.id
+        });
+      }
     } else if (hotspot.type === 'easter-egg') {
       setActiveModal({
         type: 'easter-egg',
@@ -146,6 +150,8 @@ export default function App() {
         solvedRooms={solvedRooms}
         collectedDigits={collectedDigits}
         timerSeconds={timerSeconds}
+        isCompleted={isCompleted}
+        onOpenVictory={() => setActiveModal({ type: 'victory' })}
         onOpenHelp={() => setActiveModal({ type: 'help' })}
       />
 
@@ -182,6 +188,7 @@ export default function App() {
         <VictoryScreen 
           timerSeconds={timerSeconds} 
           onRestart={handleRestart} 
+          onClose={() => setActiveModal(null)}
         />
       )}
 
