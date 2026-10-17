@@ -22,7 +22,7 @@ export default function RoomScene({
         {/* Living Room Background */}
         <div 
           className="room-scene-canvas"
-          style={{ backgroundImage: `url(${room.bgImage})` }}
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${room.bgImage ? room.bgImage.replace(/^\//, '') : ''})` }}
         />
 
         {/* Room Specific Atmospheric Animations */}
