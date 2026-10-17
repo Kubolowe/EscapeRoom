@@ -230,10 +230,10 @@ export default function EasterEggModal({ onClose }) {
                       „Przyznaję się: żaden korek w Rusocinie! O 14:00 potknąłem się o kable w magazynie, bijąc rekord w Snake'a...
                     </p>
                     <p style={{ marginTop: 4 }}>
-                      Ale najważniejsze: dzięki wielkie, że tak solidnie zapieprzaliście dla Japończyków! Bo wiecie... mamy rok 2007 i pierwszy prawdziwy escape room na świecie powstał właśnie w Japonii (Kioto), a nie w Polsce! 
+                      Ale najważniejsze: dzięki wielkie, że tak ciężko pracowaliście dla Japończyków! Bo wiecie... mamy rok 2007 i pierwszy prawdziwy escape room na świecie powstał właśnie w Japonii (Kioto), a nie w Polsce! 
                     </p>
                     <p style={{ marginTop: 4 }}>
-                      Więc oficjalnie robiliście nadgodziny dla centrali z Tokio. Arigato gozaimasu! 🇯🇵🍣 Premia oczywiście w jenach (albo punktach w Snake'u). Jesteście mistrzami logistyki!”
+                      Więc oficjalnie robiliście nadgodziny dla centrali z Tokio. Arigato gozaimasu! Premia oczywiście w jenach (albo punktach w Snake'u). Jesteście mistrzami logistyki!”
                     </p>
                   </div>
                   <div className="nokia-screen-footer">

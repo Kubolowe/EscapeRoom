@@ -328,9 +328,6 @@ Zielone diody świecą dla sekcji zasilania awaryjnego, wentylacji i elektrozamk
 - Cyfra 3: Sala Projektowa (Layout i BHP)
 - Cyfra 4: Centrum Kontroli (Odbiór jakościowy)
 
-*Poufny dopisek Dyrektora:*
-"I najważniejsze: wielkie dzięki, że tak ciężko pracowaliście dla Japończyków! Bo wiecie... mamy rok **2007** i to w **Japonii (Kioto)** właśnie otwarto pierwszy prawdziwy escape room na świecie, a nie w Polsce! Można więc uznać, że cały ten bałagan logistyczny ogarnialiście w ramach tajnej misji dla centrali z Tokio. *Arigato gozaimasu!* 🇯🇵🍣"
-
 Sprawdź swój HUD w górnym pasku. Wprowadź kombinację na klawiaturze sejfu i otwórz obiekt na czas!"`
       },
       {
