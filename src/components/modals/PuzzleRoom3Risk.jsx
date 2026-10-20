@@ -71,7 +71,6 @@ export default function PuzzleRoom3Risk({
         </div>
 
         <div className="modal-body">
-          {/* Nokia 3310 Stylized Mockup */}
           <div className="nokia-container">
             <div className="nokia-phone">
               <div className="nokia-brand">NOKIA</div>
@@ -87,7 +86,7 @@ export default function PuzzleRoom3Risk({
               </div>
               <div className="nokia-keypad-mock">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((k) => (
-                  <div key={k} className="nokia-key" />
+                  <div key={k} className="nokia-key-mock" />
                 ))}
               </div>
             </div>

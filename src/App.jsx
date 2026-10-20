@@ -53,6 +53,25 @@ export default function App() {
     }
   }, [timerSeconds, gameStarted, isCompleted, hasTriggeredTimeout]);
 
+  useEffect(() => {
+    const checkUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('nokia') === 'true' || window.location.hash === '#nokia') {
+        setActiveModal({ type: 'easter-egg', isTimeout: params.get('timeout') === 'true' });
+      }
+    };
+    checkUrl();
+    window.addEventListener('hashchange', checkUrl);
+
+    window.__openNokia = (isTimeout = false) => {
+      setActiveModal({ type: 'easter-egg', isTimeout });
+    };
+    return () => {
+      window.removeEventListener('hashchange', checkUrl);
+      delete window.__openNokia;
+    };
+  }, []);
+
   // Handle Game Start
   const handleStartGame = () => {
     setGameStarted(true);
